@@ -1,0 +1,36 @@
+
+
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/home.css">
+<!-- All the template files are our own code -->
+
+<div class="content">
+<div class="textwelcome">Welcome to Our IVP project Demostraion </div>
+<p class="para">Hello! As a part of our course project EE6310( <strong>Prof.</strong> Sumohana sir). We have built this project for the demonstration of the <strong>Steganography</strong> and <strong> Steganalysis </strong></p>
+</div>
+<div class="cards">
+    <div class="box">
+        <h1 class="event">
+            Steganography
+        </h1>
+        <p class="participants">
+            Here You can hide any steganographic data in an image
+        </p>
+        <br>
+        <a href="/steganography"><div class="join join-btn joinbtn" >Steganography</div></a>
+        <br>
+    </div>
+    <div class="box">
+        <h1 class="event">
+            Steganalysis
+        </h1>
+        <p class="participants">
+            Here You can perform the Steganalysis! With the model that we have trained.
+        </p>
+        <br>
+        <a href="/steganalysis"><div class="join join-btn joinbtn" >Steganalysis</div></a>
+        <br>
+    </div>
+</div>
+{% endblock %}

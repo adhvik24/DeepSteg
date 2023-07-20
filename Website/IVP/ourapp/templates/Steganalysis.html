@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="/static/css/steg.css">
+<!-- Nav tabs -->
+
+<div id="topheader">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+          <ul class="nav navbar-nav d-flex justify-content-center">
+            <li class=""><a href="/steganography">Steganography</a></li>
+            <li><a href="/steganalysis">Steganalysis</a></li>
+          </ul>
+      </div>
+    </nav>
+  </div>
+  {% if (yayfound)%}
+    <h2 class="Text">Here are steganographic image:</h2>
+    <div class="box">
+        <img class="rounded" src="{{image_file}}">
+    </div>
+    {% endif %}
+ 
+    <div class="container">
+        <form method="POST" class="boxM mx-auto" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="formlabel mb-4 event">Decode if the message is there in the picture using Steganalysis</legend>
+                <div class="form-group">
+                    {{ form.picture.label() }}
+                    <div class="my-2">
+                        {{ form.picture(class="form-control-file") }}
+                        {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group my-4 buttonfind">
+                    {{ form.submit(class="btn btn-outline-info", id = "submit") }}
+                </div>
+            </fieldset>
+            
+        </form>
+    </div>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+       $('ul li a').click(function(){
+         $('li a').removeClass("active");
+         $(this).addClass("active");
+     });
+     });
+ 
+ </script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/css/steg.css">
+<!-- Nav tabs -->
+<div id="topheader">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav d-flex justify-content-center">
+          <li class=""><a href="/steganography">Steganography</a></li>
+          <li><a href="/steganalysis">Steganalysis</a></li>
+        </ul>
+    </div>
+  </nav>
+</div>
+{% if (yayfound)%}
+<h2 class="Text">Here is the steganographic image(Click to download):</h2>
+<div class="box">
+    <a href="{{image_file}}" download>
+    <img class="rounded" src="{{image_file}}">
+    </a>
+</div>
+{% endif %}
+
+<div class="container ">
+   
+    <div class="container">
+        <form method="POST" class="boxM mx-auto" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="formlabel mb-4 event">Hide a Message With J-UNIWARD Steganography</legend>
+                <div class="form-group">
+                    {{ form.message.label(class="form-control-label ") }}
+                    {% if form.message.errors %}
+                    {{ form.message(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.message.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.message(class="form-control form-control-lg forminput") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.picture.label() }}
+                    <div class="my-2">
+                        {{ form.picture(class="form-control-file") }}
+                        {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group my-4 buttonfind">
+                    {{ form.submit(class="btn btn-outline-info", id = "submit") }}
+                </div>
+            </fieldset>
+           
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
